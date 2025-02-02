@@ -1,10 +1,16 @@
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-# MongoDB Connection
-client = MongoClient("mongodb://localhost:27017/")
+# MongoDB Connection using environment variables
+mongo_host = os.environ.get("MONGO_HOST")
+mongo_port = os.environ.get("MONGO_PORT") 
+client = MongoClient(f"mongodb://{mongo_host}:{mongo_port}/")
 db = client.names_db
 names_collection = db.names
 
@@ -23,4 +29,7 @@ def get_names():
     return jsonify(names), 200
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5001)
+    # Flask app host and port from environment variables
+    backend_host = os.environ.get("BACKEND_HOST")
+    backend_port = int(os.environ.get("BACKEND_PORT"))
+    app.run(host=backend_host, port=backend_port)

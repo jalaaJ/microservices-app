@@ -1,9 +1,16 @@
 from flask import Flask, render_template, request
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-BACKEND_URL = "http://127.0.0.1:5001"
+# Compose the backend URL from environment variables
+backend_host = os.environ.get("BACKEND_HOST")
+backend_port = os.environ.get("BACKEND_PORT")
+BACKEND_URL = f"http://{backend_host}:{backend_port}"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -16,4 +23,7 @@ def index():
     return render_template("index.html", names=names)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000)
+    
+    frontend_host = os.environ.get("FRONTEND_HOST")
+    frontend_port = int(os.environ.get("FRONTEND_PORT"))
+    app.run(host=frontend_host, port=frontend_port)
