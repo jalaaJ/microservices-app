@@ -93,12 +93,14 @@ This script assumes you have proper permissions to run sudo service mongodb star
     Make sure you're in the project root, then run:
 
     docker build -t app-backend ./backend
+    
     docker run -d --name backend -p 5001:5001 --env-file .env app-backend
 
 3. **Build and Run the Frontend Container**
     Make sure you're in the project root, then run:
 
     docker build -t app-frontend ./frontend
+
     docker run -d --name frontend -p 5000:5000 --env-file .env app-frontend
 
 # This way we load the environment variables at runtime, and we run each container separately.
