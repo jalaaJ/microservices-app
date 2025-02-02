@@ -74,3 +74,12 @@ The applications use the python-dotenv package to load these variables.
 The backend service is responsible for handling API requests and interacting with the MongoDB database.
 
 The frontend service sends requests to the backend and displays the results in a web interface.
+
+## Alernative way to start the application using the start-app.sh script
+
+1. **Make the Script Executable:**
+    chmod +x start-app.sh
+
+2. **./start-app.sh**
+
+This script assumes you have proper permissions to run sudo service mongodb start and that your directory structure includes backend and frontend folders!
