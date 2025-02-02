@@ -1,4 +1,4 @@
-# My Application
+# Microservices Application
 
 This repository contains two services:
 
