@@ -17,10 +17,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code.
 COPY app.py ./
 COPY templates/ ./templates/
-COPY ../.env ./
 
-# Load .env file inside the container
-ENV $(cat .env | xargs)
+# Allow .env to be passed as a build argument
+ARG ENV_FILE=.env
+COPY ${ENV_FILE} .env
 
 # Expose the port the app listens on.
 EXPOSE 5000
