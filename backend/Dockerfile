@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code.
 COPY app.py ./
 
-# Allow .env to be passed as a build argument
+# copy .env file if it exists
 ARG ENV_FILE=.env
 COPY ${ENV_FILE} .env
 
