@@ -10,7 +10,7 @@ app = Flask(__name__)
 # MongoDB Connection using environment variables
 mongo_host = os.environ.get("MONGO_HOST")
 mongo_port = os.environ.get("MONGO_PORT") 
-client = MongoClient(f"mongodb://{mongo_host}:{mongo_port}/")
+client = MongoClient(f"mongodb://admin:password@{mongo_host}:{mongo_port}/?authSource=admin")
 db = client.names_db
 names_collection = db.names
 
