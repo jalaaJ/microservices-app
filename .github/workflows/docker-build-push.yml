@@ -15,6 +15,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Copy .env file into Backend and Frontend
+        run: |
+          cp .env backend/.env
+          cp .env frontend/.env
+
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
@@ -25,7 +30,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend
-          build-args: ENV_FILE=../.env
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:2.0
@@ -34,7 +38,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
-          build-args: ENV_FILE=../.env
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/frontend:2.0
