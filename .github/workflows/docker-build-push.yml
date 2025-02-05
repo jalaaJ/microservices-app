@@ -25,18 +25,18 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend
+          build-args: ENV_FILE=../.env
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/backend:2.0
-            ${{ secrets.DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
 
       - name: Build and Push Frontend Image
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
+          build-args: ENV_FILE=../.env
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/frontend:2.0
-            ${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
 
 
