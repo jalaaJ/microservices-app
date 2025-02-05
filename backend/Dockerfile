@@ -16,6 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code.
 COPY app.py ./
+COPY ../.env ./
+
+# Load .env file inside the container
+ENV $(cat .env | xargs)
 
 # Expose the port the app runs on.
 EXPOSE 5001
