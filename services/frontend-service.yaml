@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: NodePort  # Use NodePort for external access in local clusters.
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 5000         # Service port inside the cluster.
+    targetPort: 5000   # Container port.
+    nodePort: 30000    # External port on each Node.
