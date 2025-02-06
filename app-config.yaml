@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  # MongoDB settings (non‑sensitive part)
+  MONGO_HOST: "app-mongodb"
+  MONGO_PORT: "27017"
+  # Backend settings (for binding and service)
+  BACKEND_BIND_HOST: "0.0.0.0"         # Used by the backend to bind on all interfaces
+  BACKEND_PORT: "5001"
+  BACKEND_SERVICE_HOST: "backend"      # Used by the frontend to reach the backend
+  # Frontend settings
+  FRONTEND_BIND_HOST: "0.0.0.0"          # Used by the frontend to bind on all interfaces
+  FRONTEND_PORT: "5000"
