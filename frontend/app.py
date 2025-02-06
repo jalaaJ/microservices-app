@@ -7,10 +7,10 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Compose the backend URL from environment variables
-backend_host = os.environ.get("BACKEND_HOST")
-backend_port = os.environ.get("BACKEND_PORT")
-BACKEND_URL = f"http://{backend_host}:{backend_port}"
+# Use BACKEND_SERVICE_HOST (the Docker network alias) for the URL
+backend_service_host = os.environ.get("BACKEND_SERVICE_HOST", "backend")
+backend_port = os.environ.get("BACKEND_PORT", "5001")
+BACKEND_URL = f"http://{backend_service_host}:{backend_port}"
 
 @app.route("/", methods=["GET", "POST"])
 def index():

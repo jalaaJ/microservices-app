@@ -29,7 +29,7 @@ def get_names():
     return jsonify(names), 200
 
 if __name__ == "__main__":
-    # Flask app host and port from environment variables
-    backend_host = os.environ.get("BACKEND_HOST")
-    backend_port = int(os.environ.get("BACKEND_PORT"))
-    app.run(host=backend_host, port=backend_port)
+    # Use BACKEND_BIND_HOST for binding the Flask server
+    backend_bind_host = os.environ.get("BACKEND_BIND_HOST", "0.0.0.0")
+    backend_port = int(os.environ.get("BACKEND_PORT", 5001))
+    app.run(host=backend_bind_host, port=backend_port)
