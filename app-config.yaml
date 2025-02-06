@@ -4,7 +4,7 @@ metadata:
   name: app-config
 data:
   # MongoDB settings (non‑sensitive part)
-  MONGO_HOST: "app-mongodb"
+  MONGO_HOST: "mongodb"
   MONGO_PORT: "27017"
   # Backend settings (for binding and service)
   BACKEND_BIND_HOST: "0.0.0.0"         # Used by the backend to bind on all interfaces
