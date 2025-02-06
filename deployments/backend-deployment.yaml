@@ -20,9 +20,33 @@ spec:
         ports:
         - containerPort: 5001
         env:
-        - name: MONGO_URI
-          value: "mongodb://admin:password@mongodb:27017/?authSource=admin"
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_HOST
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_PORT
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: MONGO_USERNAME
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: MONGO_PASSWORD
         - name: BACKEND_BIND_HOST
-          value: "0.0.0.0"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: BACKEND_BIND_HOST
         - name: BACKEND_PORT
-          value: "5001"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: BACKEND_PORT

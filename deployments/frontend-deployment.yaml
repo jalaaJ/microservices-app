@@ -21,10 +21,22 @@ spec:
         - containerPort: 5000
         env:
         - name: BACKEND_SERVICE_HOST
-          value: "backend"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: BACKEND_SERVICE_HOST
         - name: BACKEND_PORT
-          value: "5001"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: BACKEND_PORT
         - name: FRONTEND_BIND_HOST
-          value: "0.0.0.0"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: FRONTEND_BIND_HOST
         - name: FRONTEND_PORT
-          value: "5000"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: FRONTEND_PORT
