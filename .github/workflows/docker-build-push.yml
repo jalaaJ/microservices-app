@@ -1,9 +1,6 @@
 name: Build and Push Backend and Frontend Docker Images to Dockerhub
 
-on:
-  push:
-    branches:
-      - main  
+on:  
   workflow_dispatch: 
 
 jobs:
