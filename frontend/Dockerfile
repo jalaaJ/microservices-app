@@ -19,8 +19,8 @@ COPY app.py ./
 COPY templates/ ./templates/
 
 # copy .env file if it exists
-ARG ENV_FILE=.env
-COPY ${ENV_FILE} .env
+# ARG ENV_FILE=.env
+# COPY ${ENV_FILE} .env
 
 # Expose the port the app listens on.
 EXPOSE 5000

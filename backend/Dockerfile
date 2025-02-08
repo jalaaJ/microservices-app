@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py ./
 
 # copy .env file if it exists
-ARG ENV_FILE=.env
-COPY ${ENV_FILE} .env
+# ARG ENV_FILE=.env
+# COPY ${ENV_FILE} .env
 
 # Expose the port the app runs on.
 EXPOSE 5001
