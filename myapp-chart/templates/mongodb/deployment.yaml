@@ -21,12 +21,12 @@ spec:
           - name: MONGO_INITDB_ROOT_USERNAME
             valueFrom:
               secretKeyRef:
-                name: mongodb-secret
+                name: mongodb-secret-{{ .Release.Name }}
                 key: MONGO_INITDB_ROOT_USERNAME
           - name: MONGO_INITDB_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: mongodb-secret
+                name: mongodb-secret-{{ .Release.Name }}
                 key: MONGO_INITDB_ROOT_PASSWORD
         ports:
           - containerPort: {{ .Values.mongodbPort }}
