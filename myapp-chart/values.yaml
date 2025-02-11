@@ -1,0 +1,24 @@
+# MongoDB settings
+mongodbImage: mongo:6.0
+mongodbReplicas: 1
+mongodbPort: 27017
+mongodbStorageSize: 5Gi
+mongodbStorageClass: hostpath
+
+# Backend settings
+backendImage: jalaaj/backend:4.0
+backendReplicas: 2
+backendPort: 5001
+backendBindHost: "0.0.0.0"
+backendEnvMongoHost: mongodb
+backendEnvMongoPort: "27017"
+
+# Frontend settings
+frontendImage: jalaaj/frontend:4.0
+frontendReplicas: 2
+frontendPort: 5000
+frontendBindHost: "0.0.0.0"
+frontendServiceType: NodePort
+frontendServiceNodePort: 30000
+frontendEnvBackendHost: backend
+frontendEnvBackendPort: "5001"

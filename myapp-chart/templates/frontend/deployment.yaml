@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: {{ .Values.frontendReplicas }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: "{{ .Values.frontendImage }}"
+        ports:
+          - containerPort: {{ .Values.frontendPort }}
+        env:
+          - name: BACKEND_SERVICE_HOST
+            value: "{{ .Values.frontendEnvBackendHost }}"
+          - name: BACKEND_PORT
+            value: "{{ .Values.frontendEnvBackendPort }}"
+          - name: FRONTEND_BIND_HOST
+            value: "{{ .Values.frontendBindHost }}"
+          - name: FRONTEND_PORT
+            value: "{{ .Values.frontendPort }}"
