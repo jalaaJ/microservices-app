@@ -10,4 +10,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: "{{ .Values.mongodbStorageClass }}"
   hostPath:
-    path: /mnt/data/mongo
+    path: /mnt/data/mongo-{{ .Release.Name }}
