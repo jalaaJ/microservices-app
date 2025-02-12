@@ -8,4 +8,4 @@ spec:
     - port: {{ .Values.backendPort }}
       targetPort: {{ .Values.backendPort }}
   selector:
-    app: backend
+    app: backend-{{ include "my-app.fullname" . }}

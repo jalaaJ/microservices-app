@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: frontend-{{ include "my-app.fullname" . }}
 spec:
   type: {{ .Values.frontendServiceType }}
   ports:
@@ -9,4 +9,4 @@ spec:
       targetPort: {{ .Values.frontendPort }}
       nodePort: {{ .Values.frontendServiceNodePort }}
   selector:
-    app: frontend
+    app: frontend-{{ include "my-app.fullname" . }}

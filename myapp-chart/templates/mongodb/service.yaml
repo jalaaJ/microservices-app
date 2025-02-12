@@ -8,4 +8,4 @@ spec:
     - port: {{ .Values.mongodbPort }}
       targetPort: {{ .Values.mongodbPort }}
   selector:
-    app: mongodb
+    app: mongodb-{{ include "my-app.fullname" . }}

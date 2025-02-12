@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mongo-pv-{{ .Release.Name }}
+  name: mongo-pv-{{ include "my-app.fullname" . }}
 spec:
   capacity:
     storage: {{ .Values.mongodbStorageSize }}
@@ -10,4 +10,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: "{{ .Values.mongodbStorageClass }}"
   hostPath:
-    path: /mnt/data/mongo-{{ .Release.Name }}
+    path: /mnt/data/mongo-{{ include "my-app.fullname" . }}

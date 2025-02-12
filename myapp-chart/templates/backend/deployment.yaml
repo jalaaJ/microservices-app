@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-{{ include "my-app.fullname" . }}
   labels:
-    app: backend
+    app: backend-{{ include "my-app.fullname" . }}
 spec:
   replicas: {{ .Values.backendReplicas }}
   selector:
     matchLabels:
-      app: backend
+      app: backend-{{ include "my-app.fullname" . }}
   template:
     metadata:
       labels:
-        app: backend
+        app: backend-{{ include "my-app.fullname" . }}
     spec:
       containers:
       - name: backend
